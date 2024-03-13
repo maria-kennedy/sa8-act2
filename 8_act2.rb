@@ -1,6 +1,25 @@
 #############################
 # PROB 1
-# puts "P1:"
+puts "P1:"
+
+class Laptop
+    def initialize(brand, model)
+        @brand = brand
+        @model = model
+    end
+
+    def brand
+        @brand
+    end
+
+    def model
+        @model
+    end
+end
+
+my_laptop = Laptop.new("Apple", "Macbook Pro")
+puts my_laptop.brand
+puts my_laptop.model
 
 
 #############################
