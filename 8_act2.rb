@@ -24,7 +24,28 @@ puts my_laptop.model
 
 #############################
 # PROB 2
-# puts "P2:"
+puts "P2:"
+
+class Gadget
+    attr_reader :name
+    attr_writer :price
+    # initialize both
+    def initialize(name, price)
+        @name = name
+        @price = price
+    end
+    # getter for price
+    def price
+        @price
+    end
+end
+
+my_gadget = Gadget.new("Apple Watch", 299)
+
+puts my_gadget.name
+
+my_gadget.price = 249
+puts "New price: #{my_gadget.price}"
 
 
 #############################
