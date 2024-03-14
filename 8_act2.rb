@@ -107,9 +107,7 @@ class Appliance
 #############################
 # PROB 5
 puts "P5:"
-# Define a module Payments as a namespace, and within it, define two classes, 
-# Invoice and Receipt. Demonstrate creating instances of these classes within 
-# the Payments namespace.
+
 module Payments     # namespace
 
     class Invoice
@@ -136,9 +134,6 @@ rec.paid
 #############################
 # PROB 6
 puts "P6:"
-# Create a module Drivable with a method drive. 
-# Include this module in a Car class and a Truck class to share the drive 
-# method functionality. Show how objects of both classes can use the drive method.
 
 module Drivable
     # method within module
@@ -161,31 +156,109 @@ my_truck.drive
 
 #############################
 # PROB 7
-# puts "P7:"
-# Define two classes, Writer and Painter, each with a create method. 
-# Write a function showcase_talent that takes an array 
-# of artists (writers and painters) and calls create on each, 
-# demonstrating polymorphism through duck typing.
+puts "P7:"
+
+# writer adn painter classes
+class Writer
+    def create
+      puts "Creating a new novella"
+    end
+end
+  
+class Painter
+    def create
+      puts "Creating a new mural"
+    end
+end
+
+# method that takes an array of artists
+def showcase_talent(artists)
+    artists.each do |artist|
+      artist.create
+    end
+end
+
+#array of artists
+artists = [Writer.new, Painter.new]
+  
+showcase_talent(artists)
 
 
 #############################
 # PROB 8
-# puts "P8:"
-# Create a BankAccount class with methods to deposit and withdraw. 
-# Use a private method log_transaction to log each deposit and withdrawal, 
-# demonstrating encapsulation.
+puts "P8:"
+
+
+class BankAccount
+    def initialize
+        @balance = 0
+    end
+
+    def deposit(ammount)
+        log_transaction("Deposit: #{ammount}") # should print message
+        @balance += ammount
+    end
+
+    def withdraw(ammount)
+        log_transaction("Withdraw: #{ammount}") # should print message
+        @balance -= ammount
+    end
+
+    # private method
+    private
+    def log_transaction(stuff)
+        puts stuff
+    end
+end
+
+my_account = BankAccount.new
+my_account.deposit(10000)
+my_account.withdraw(100)
+
 
 #############################
 # PROB 9
-# puts "P9:"
-# Define a Camera class with an instance variable @status. 
-# Use self to write methods turn_on and turn_off that 
-# update the @status and print whether the camera is on or off.
+puts "P9:"
+
+
+class Camera
+    
+    attr_accessor :status
+    
+    # instance variable
+    def initialize
+        @status = "OFF"
+    end
+
+    # using self
+    def turn_on
+        self.status = "ON"
+        puts "Camera is #{status}"
+    end
+
+    def turn_off
+        self.status = "OFF"
+        puts "Camera is #{status}"
+    end
+end
+
+my_camera = Camera.new
+my_camera.turn_on
+my_camera.turn_off
 
 #############################
 # PROB 10
-# puts "P10:"
-# Create a Quiz class that dynamically defines methods for different questions 
-# (e.g., question_about_math, question_about_history) using define_method. 
-# Each method should print a question to the console.
+puts "P10:"
 
+
+class Quiz
+    ["math", "history", "science"].each do |subject|
+        define_method("question_about_#{subject}") do   # using define_method
+            puts "Subject: #{subject}   Question: Am I doing this correctly?"
+        end
+    end
+end
+
+my_quiz = Quiz.new
+my_quiz.question_about_math
+my_quiz.question_about_history
