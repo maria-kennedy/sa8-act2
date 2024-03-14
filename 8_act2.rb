@@ -77,13 +77,13 @@ puts my_username.username
 #############################
 # PROB 4
 puts "P4:"
-
+# parent class
 class Appliance
     def show_info
       puts "This is a household appliance."
     end
   end
-  
+  # child classes
   class Refrigerator < Appliance
     def finish
       puts "Finish: stainless steel"
@@ -106,19 +106,58 @@ class Appliance
 
 #############################
 # PROB 5
-# puts "P5:"
+puts "P5:"
 # Define a module Payments as a namespace, and within it, define two classes, 
 # Invoice and Receipt. Demonstrate creating instances of these classes within 
 # the Payments namespace.
+module Payments     # namespace
+
+    class Invoice
+        def pay
+            puts "Invoice needs to be paid."
+        end
+    end
+
+    class Receipt
+        def paid
+            puts "Receipt has been paid."
+        end
+    end
+
+end
+
+inv = Payments::Invoice.new
+inv.pay
+rec = Payments::Receipt.new
+rec.paid
+
 
 
 #############################
 # PROB 6
-# puts "P6:"
+puts "P6:"
 # Create a module Drivable with a method drive. 
 # Include this module in a Car class and a Truck class to share the drive 
 # method functionality. Show how objects of both classes can use the drive method.
 
+module Drivable
+    # method within module
+    def drive
+        puts "Vroom"
+    end
+end
+# car and truck classes
+class Car
+    include Drivable # from module
+end
+class Truck
+    include Drivable
+end
+
+my_car = Car.new
+my_car.drive
+my_truck = Truck.new
+my_truck.drive
 
 #############################
 # PROB 7
